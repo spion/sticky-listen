@@ -121,7 +121,7 @@ error to the client.
 ##### `behindProxy`
 
 If you use this option, sticky-listen will read the headers and look for
-`x-forwarded-for` when reading the IP address of the client. This enables the
+a header field with the value specified in `behindProxy` (if just set to true the value used is `x-forwarded-for`) when reading the IP address of the client. This enables the
 balancer to work well even behind proxies such as HAProxy or nginx.
 
 ## LICENSE
