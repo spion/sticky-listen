@@ -128,7 +128,8 @@ balancer to work well even behind proxies such as HAProxy or nginx.
 
 This software is licensed under the MIT License.
 
-Copyright Fedor Indutny and Gorgi Kosev, 2015
+
+Copyright Fedor Indutny, 2015; Gorgi Kosev, 2015.
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
