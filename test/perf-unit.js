@@ -7,12 +7,12 @@ function testHasher() {
     var ipBuf = Buffer(ip);
     console.log(h.hashString(ip), h.hashBytes(ipBuf, 0, ipBuf.length))
 
-    console.time('str');
+    console.time('str x 1M');
     for (var k = 0; k < 1000000; ++k) h.hashString(ip)
-    console.timeEnd('str');
-    console.time('byte')
+    console.timeEnd('str x 1M');
+    console.time('byte x 1M')
     for (var k = 0; k < 1000000; ++k) h.hashBytes(ipBuf, 0, ipBuf.length)
-    console.timeEnd('byte');
+    console.timeEnd('byte x 1M');
 }
 
 function noop(){}
@@ -21,9 +21,9 @@ function testHeader() {
     var data = require('fs').readFileSync('header.txt');
 
     for (var k = 0; k < 1000000; ++k) parse(data);
-    console.time();
+    console.time('real-header x 1M');
     for (var k = 0; k < 1000000; ++k) parse(data);
-    console.timeEnd();
+    console.timeEnd('real-header x 1M');
     var pos = parse(data);
     if (pos == null) {
         console.log("No header");
@@ -33,7 +33,11 @@ function testHeader() {
     }
 }
 
+console.log("Hashing tests")
+
 testHasher()
+
+console.log("Parsing tests")
 
 testHeader();
 
