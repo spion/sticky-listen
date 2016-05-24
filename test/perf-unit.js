@@ -1,5 +1,6 @@
 var IPHasher = require('../lib/ip-hash')
 var parse = require('../lib/header-parser')
+'use strict';
 
 function testHasher() {
     var h = new IPHasher();

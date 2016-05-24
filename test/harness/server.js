@@ -1,3 +1,4 @@
+'use strict';
 var sticky = require('../../')
 var http = require('http')
 

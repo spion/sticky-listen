@@ -1,3 +1,4 @@
+'use strict';
 var recluster = require('recluster'),
     path = require('path'),
     sticky = require('../')
