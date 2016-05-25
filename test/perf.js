@@ -1,7 +1,7 @@
 'use strict';
 var recluster = require('recluster'),
     path = require('path'),
-    sticky = require('../')
+    sticky = require('../');
 
 var cluster = recluster(path.join(__dirname, 'harness/server.js'), {
   readyWhen: 'ready'
@@ -14,7 +14,7 @@ process.on('SIGUSR2', function() {
     cluster.reload();
 });
 
-console.log("spawned cluster, kill -s SIGUSR2", process.pid, "to reload");
+console.log('spawned cluster, kill -s SIGUSR2', process.pid, 'to reload');
 
 // Added for the sticky listener:
 
@@ -26,5 +26,5 @@ var balancer = sticky.createBalancer({
 });
 
 balancer.listen(8081, function() {
-  console.log("Sticky balancer listening on port", 8081);
+  console.log('Sticky balancer listening on port', 8081);
 });

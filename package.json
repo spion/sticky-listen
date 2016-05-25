@@ -9,9 +9,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node test/test-basic.js"
+    "test": "node test/test-basic.js",
+    "lint": "jscs index.js ./lib/ ./test/ && jshint index.js ./lib/ ./test/"
   },
   "devDependencies": {
+    "jscs": "^3.0.3",
+    "jshint": "^2.9.2",
     "recluster": "^0.4.3"
   },
   "directories": {
