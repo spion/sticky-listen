@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:@coorpacademy/coorpacademy/core"
+  ],
+  "plugins": [
+    "@coorpacademy/coorpacademy"
+  ],
+  "rules": {
+    "indent": "off"
+  }
+}
