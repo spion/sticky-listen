@@ -8,18 +8,6 @@ var recluster = require('recluster');
 
 var PORT = 8099;
 
-
-// function once(condition, execution) {
-//     var interval = setInterval(check, 33);
-//     function check() {
-//         if (condition()) {
-//             clearInterval(interval);
-//             execution();
-//         }
-//     }
-//
-// }
-
 function test() {
     var cluster = recluster(path.join(__dirname, 'harness/server.js'), {
         readyWhen: 'ready'
@@ -40,7 +28,7 @@ function test() {
 
         var sticky = null;
         function done(res) {
-            if (sticky == null) sticky = res.headers['x-sticky'];
+            if (!sticky) sticky = res.headers['x-sticky'];
             assert(res.headers['x-sticky'] === sticky);
             sticky = res.headers['x-sticky'];
             res.resume();

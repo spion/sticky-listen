@@ -13,8 +13,8 @@ exports.listen = listen;
 
 function listen(server) {
     process.on('message', function(data, socket) {
-        if (data.msg === 'sticky:balance' && socket != null) {
-            if (data.payload != null) {
+        if (data.msg === 'sticky:balance' && socket) {
+            if (data.payload) {
                 socket.push(new Buffer(data.payload, 'binary'));
             }
             server.emit('connection', socket);

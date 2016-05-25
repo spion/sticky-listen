@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use strict';
 var IPHasher = require('../lib/ip-hash');
 var parse = require('../lib/header-parser').parse;
@@ -19,7 +20,7 @@ function testHeader() {
     for (var k = 0; k < 1000000; ++k) parse(data);
     console.timeEnd('parse');
     var pos = parse(data);
-    if (pos == null) {
+    if (!pos) {
         console.log('No header');
     }
     else {
@@ -30,4 +31,3 @@ function testHeader() {
 testHasher();
 
 testHeader();
-
