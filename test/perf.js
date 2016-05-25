@@ -1,3 +1,4 @@
+'use strict';
 var recluster = require('recluster'),
     path = require('path'),
     sticky = require('../')
@@ -19,6 +20,7 @@ console.log("spawned cluster, kill -s SIGUSR2", process.pid, "to reload");
 
 var balancer = sticky.createBalancer({
   activeWorkers: cluster.activeWorkers,
+  behindProxy: true,
   maxRetries: 5,
   retryDelay: 100
 });

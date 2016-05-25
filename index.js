@@ -1,3 +1,4 @@
+'use strict';
 var Master = require('./lib/master')
 var Buffer = require('buffer').Buffer;
 
