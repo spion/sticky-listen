@@ -1,8 +1,8 @@
 {
-  "name": "sticky-listen",
-  "description": "Sticky listener based on Fedor Indutny's sticky-sessions",
+  "name": "cluster-sticky",
+  "description": "Sticky listener based on Spion 's sticky-listen",
   "version": "3.1.0",
-  "author": "Gorgi Kosev <gorgi.kosev@gmail.com>",
+  "author": "Loïc Calvy <lc@coorpacademy.com>",
   "main": "index.js",
   "engines": {
     "node": ">= 0.12.0"
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spion/sticky-session.git"
+    "url": "git+https://github.com/coorpacademy/cluster-sticky.git"
   },
   "keywords": [
     "sticky",
@@ -29,9 +29,9 @@
     "balancer"
   ],
   "bugs": {
-    "url": "https://github.com/spion/sticky-session/issues"
+    "url": "https://github.com/coorpacademy/cluster-sticky/issues"
   },
-  "homepage": "https://github.com/spion/sticky-session#readme",
+  "homepage": "https://github.com/coorpacademy/cluster-sticky#readme",
   "dependencies": {
     "debug": "^2.2.0"
   }
