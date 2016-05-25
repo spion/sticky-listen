@@ -9,15 +9,16 @@ var recluster = require('recluster');
 var PORT = 8099;
 
 
-function once(condition, execution) {
-    function check() {
-        if (condition()) {
-            clearInterval(interval);
-            execution();
-        }
-    }
-    var interval = setInterval(check, 33);
-}
+// function once(condition, execution) {
+//     var interval = setInterval(check, 33);
+//     function check() {
+//         if (condition()) {
+//             clearInterval(interval);
+//             execution();
+//         }
+//     }
+//
+// }
 
 function test() {
     var cluster = recluster(path.join(__dirname, 'harness/server.js'), {
