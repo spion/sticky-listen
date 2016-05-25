@@ -1,5 +1,5 @@
 'use strict';
-var Master = require('./lib/master')
+var Master = require('./lib/master');
 var Buffer = require('buffer').Buffer;
 
 exports.createBalancer = createBalancer;
@@ -15,11 +15,11 @@ function listen(server) {
     process.on('message', function(data, socket) {
         if (data.msg === 'sticky:balance' && socket != null) {
             if (data.payload != null) {
-                socket.push(new Buffer(data.payload, 'binary'))
+                socket.push(new Buffer(data.payload, 'binary'));
             }
             server.emit('connection', socket);
         }
     });
-    server.emit('listening')
+    server.emit('listening');
     return true;
 }
