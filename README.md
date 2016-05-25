@@ -1,8 +1,13 @@
-# sticky-listen
+# cluster-sticky
 
 A simple performant way to use socket.io with [recluster][recluster], based on
-Fedor's sticky-session
+Spion's sticky-listen.
 
+This fork was motivated by needs to handle:
+- high performance balancer
+- multi proxy forwarded header
+- use in complex production environment with several threads, dynos (heroku) and cloudflare cdn 
+- stronlgy tested
 ## Installation
 
 ```bash
@@ -20,7 +25,8 @@ var recluster = require('recluster'),
     sticky = require('sticky-listen')
 
 var cluster = recluster(path.join(__dirname, 'server.js'), {
-  readyWhen: 'ready'
+  readyWhen: 'ready',
+  workers: 2 // #cpus, default is require('os').cpus().length
 });
 
 cluster.run();
@@ -64,15 +70,7 @@ process.send({cmd: 'ready'})
 
 ## Acknowledgement
 
-This module is based on Fedor Indutny's [sticky-session][sticky-session],
-but it decouples the worker management logic, enabling you to use any cluster
-library (such as recluster). The only requirement is that `createBalancer`
-needs to be passed `activeWorkers`, a function that returns a hash containing
-
-* a field `length`, the number of worker slots that serve requests
-* for every key `0..length`, a field that contains a [worker object][api-cluster-worker]
-  of a worker that is capable of receiving new connections. If a worker isn't
-  ready at that slot, the field should be `null`
+This module is based on Spion's [sticky-listen][sticky-listen] but it simplify hash management.
 
 ## API
 
@@ -129,7 +127,7 @@ balancer to work well even behind proxies such as HAProxy or nginx.
 This software is licensed under the MIT License.
 
 
-Copyright Fedor Indutny, 2015; Gorgi Kosev, 2015.
+Copyright Fedor Indutny, 2015; Gorgi Kosev, 2015; Loïc Calvy, 2016
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -153,3 +151,4 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 [recluster]: https://github.com/doxout/recluster
 [api-cluster-worker]: https://nodejs.org/api/cluster.html#cluster_class_worker
 [sticky-session]: (https://github.com/indutny/sticky-session)
+[sticky-listen]: (https://github.com/indutny/sticky-listen)
