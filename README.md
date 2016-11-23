@@ -57,6 +57,8 @@ var server = require('http').createServer(function(req, res) {
   res.end('worker: ' + process.env.NODE_WORKER_ID);
 });
 
+var io = require('socket.io').listen(server)
+
 sticky.listen(server)
 
 process.send({cmd: 'ready'})
